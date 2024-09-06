@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int characterReplacement(string s, int k) {
+        int n = s.size();
+        int l = 0;
+        int maxlen = 0;
+        int maxFreq = 0;
+        map<char, int> mpp;
+
+        for (int r = 0; r < n; r++) {
+            mpp[s[r]]++;
+            maxFreq = max(maxFreq, mpp[s[r]]);
+            if ((r - l + 1) - maxFreq > k) {
+                mpp[s[l]]--;
+                if (mpp[s[l]] == 0) {
+                    mpp.erase(s[l]);
+                }
+                l++;
+            }
+
+            maxlen = max(maxlen, r - l + 1);
+        }
+
+        return maxlen;
+    }
+};
