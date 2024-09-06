@@ -1,0 +1,33 @@
+void solve(){
+    ll n,k=2,maxlen=0;
+    cin >> n;
+    vector<ll>v(n);
+    getv;
+    ll l = 0;
+    ll r = 0;
+    map<ll,ll>mpp;
+    while(r < n){
+        mpp[v[r]]++;
+        if(mpp.size() > k){
+            mpp[v[l]]--;
+            if(mpp[v[l]]==0){
+                mpp.erase(v[l]);
+                l++;
+            }
+        }
+        if(mpp.size() <= k){
+            maxlen = max (maxlen, r - l + 1);
+            r++;
+        }
+        cout << maxlen << endl;
+    }
+}
+signed main(){
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+ll t;
+cin>>t;
+while(t--){
+  solve();
+}    
+}
